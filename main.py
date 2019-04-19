@@ -2,6 +2,7 @@ import handy
 import cv2
 import math
 from Hand import Hand
+import pyautogui
 
 # getting video feed from webcam
 cap = cv2.VideoCapture(0)
@@ -53,10 +54,13 @@ while True:
     font = cv2.FONT_HERSHEY_SIMPLEX
     if l==1:
         cv2.putText(quick_outline, 'Zoom out', (0, 50), font, 2, (0, 0, 255), 3, cv2.LINE_AA)
+        pyautogui.hotkey('ctrl','-')
     elif l == 2:
         cv2.putText(quick_outline, 'Right', (0, 50), font, 2, (0, 0, 255), 3, cv2.LINE_AA)
+        pyautogui.press('right')
     elif l==4:
         cv2.putText(quick_outline, 'Zoom in', (0, 50), font, 2, (0, 0, 255), 3, cv2.LINE_AA)
+        pyautogui.hotkey('ctrl', '+')
 
     #to get the centre of mass of the hand
     com = hand.get_center_of_mass()
